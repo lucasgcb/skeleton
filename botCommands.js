@@ -30,3 +30,5 @@ function botCommands(){
     }
 ///////////////
 }
+
+module.exports=botCommands;
