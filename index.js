@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-bot.login('MjY3ODUzNzkyMzI0NjE2MTky.C1SSOA.t6mUuxTbdJNjXvjenOb9-_9ddJ8');
+bot.login(''); // bot id
 
 bot.on('message', (message) => {
     if(message.content == 'bruh?')
