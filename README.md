@@ -5,6 +5,6 @@ Resources used:
 
 NodeJS v7.4.0 (https://nodejs.org/en/)
 
-discord.js (https://discord.js.org/#/docs/main/stable/general/welcome)
+discord.js (https://discord.js.org/)
 
 
