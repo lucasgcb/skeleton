@@ -13,6 +13,7 @@ intermittently until told to leave with `alright fuck off`.
 Audio can be adjusted with the following:
 
 ```
+yo play       //plays a different tune
 yo hold up     //Pauses the Audio Stream.
 yo chill     //Pauses the Audio Stream.
 alright go    //Resumes the Audio Stream.
@@ -35,12 +36,14 @@ To do:
 * Have it stream off Youtube.
 * Set permissions so not anybody can turn off your Tiny Tim mix or adjust the volume to under 300% without being allowed to.
 * Make Command parsing less/not retarded.
+* Make a queue system so it can be more aware of what it is going to do and less ghetto, of course.
 
 
 Features to Implement:
-* Content Aware Scaling images
-* Cleverbot 
+* Content Aware Scaling image processing
+* Cleverbot chats
 * Throw parties in voice channels according to local/set time.
+* Possibly invite more skeletons for said parties
 
 
 
