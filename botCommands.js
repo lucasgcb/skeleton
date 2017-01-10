@@ -14,13 +14,13 @@ function botCommands()
         {
             if(message.content.startsWith('alright fuck off'))
             {
-                message.reply('');
-                message.channel.sendFile('https://media.giphy.com/media/zZjkN02ErICiY/giphy.gif');
+                message.reply(''); //Points at the user that told it to sod off
+                message.channel.sendFile('https://media.giphy.com/media/zZjkN02ErICiY/giphy.gif'); //Sends a gif to the user's channel
             }
             else 
-                if (message.content.startsWith('yo clean'))
+                if (message.content.startsWith('yo clean')) //Messages that start with this will have the bot
                 {
-                    message.channel.bulkDelete(100);
+                    message.channel.bulkDelete(100);        //Bulk delete 100 messages.
                     message.channel.sendMessage('Ｄｅｌｅｔｅｄ   ａ   ｌｏｔｔａ    ｓｈｉｔ');
                 }
                 
@@ -33,7 +33,7 @@ function botCommands()
             if(message.content == 'bruh')
             {
                 message.channel.sendMessage('ＢＲＵＨ');
-                message.reply(randomNumber());
+                message.reply(randomNumber()); //Spits a random number from 1 to 6.
             }
         });
     }
