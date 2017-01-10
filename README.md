@@ -10,7 +10,7 @@ Current "features":
 intermittently until told to leave with `alright fuck off`.
 
 
-Audio can be adjusted with the following:
+Audio can be adjusted with messages that start with the following indexes:
 
 ```
 yo play       //plays a different tune
@@ -45,7 +45,6 @@ Features to Implement:
 * Throw parties in voice channels according to local/set time.
 * Possibly invite more skeletons for said parties
 * Google searches
-
 
 
 
