@@ -44,7 +44,7 @@ Features to Implement:
 * Cleverbot chats
 * Throw parties in voice channels according to local/set time.
 * Possibly invite more skeletons for said parties
-
+* Google searches
 
 
 
