@@ -5,7 +5,7 @@ Current "features":
 
 1- Prunes messages with `yo clean`. It really couldn't care less at the moment so it just deletes them in bulk (100). 
 
-2- Picks and plays random Tiny Tim singles (or whichever 6 tracks you'd like) with
+2- Picks and plays random Tiny Tim singles (or whichever 6 tracks declared as such) with
 `yo play` on a statically defined channel in botCommands.js 
 intermittently until told to leave with `alright fuck off`.
 
