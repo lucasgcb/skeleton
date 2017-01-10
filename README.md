@@ -9,18 +9,18 @@ Current "features":
 intermittently until told to leave with <alright fuck off>.
 Audio can be adjusted with the following:
 
->yo hold up - Pauses the Audio Stream.
->yo chill - Pauses the Audio Stream.
->alright go - Resumes the Audio Stream.
->yo go - Resumes the Audio Stream.
->yo turn it up - Raises the volume by 50%.
->alright turn it up - Raises the volume by 50%.
->yo turn it down - Lowers the volume by 25%.
->alright turn it down - Lowers the volume by 25%.
->alright fuck off - Ends the Stream and leaves.
->yo skrillex - Raises the volume by 200%.
->yo turn it all the way down - lowers the volume to 25% of the original value.
->alright turn it all the way down - lowers the volume to 25% of the original value.
+```yo hold up - Pauses the Audio Stream.
+yo chill - Pauses the Audio Stream.
+alright go - Resumes the Audio Stream.
+yo go - Resumes the Audio Stream.
+yo turn it up - Raises the volume by 50%.
+alright turn it up - Raises the volume by 50%.
+yo turn it down - Lowers the volume by 25%.
+alright turn it down - Lowers the volume by 25%.
+alright fuck off - Ends the Stream and leaves.
+yo skrillex - Raises the volume by 200%.
+yo turn it all the way down - lowers the volume to 25% of the original value.
+alright turn it all the way down - lowers the volume to 25% of the original value.```
 
 ##Requires ffmpeg in the target folder.
 
