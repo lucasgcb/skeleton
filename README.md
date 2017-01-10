@@ -27,7 +27,7 @@ yo turn it all the way down       //lowers the volume to 25% of the original val
 alright turn it all the way down      //lowers the volume to 25% of the original value.
 ```
 
-##Audio streaming requires ffmpeg(https://ffmpeg.org/) in the target folder.
+##Audio streaming requires ffmpeg (https://ffmpeg.org/) in the target folder.
 
 To do: 
 
