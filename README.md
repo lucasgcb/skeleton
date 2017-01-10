@@ -45,7 +45,7 @@ Features to Implement:
 * Throw parties in voice channels according to local/set time.
 * Possibly invite more skeletons for said parties
 * Google searches
-
+* Englobe everything it says in Microsoft YaHei font implicitly
 
 
 
