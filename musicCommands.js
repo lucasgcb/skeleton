@@ -27,7 +27,7 @@ function play(botID, message, voiceChannel)
         dispatcher.on('end', (end) => 
         {
             //message.channel.sendMessage('Ｄｏｎｅ' + end);
-            if(end.startsWith('Stream is not generating quickly enough'))
+            if(end.startsWith('Stream is not generating quickly enough')) //If the Stream ends due to lack of content
             {
                 play(botID, message, voiceChannel); //eternal loop until someone tells the bot to fuck off
             }
