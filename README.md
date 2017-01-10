@@ -27,7 +27,7 @@ yo turn it all the way down       //lowers the volume to 25% of the original val
 alright turn it all the way down      //lowers the volume to 25% of the original value.
 ```
 
-##Requires ffmpeg in the target folder.
+##Audio streaming requires ffmpeg(https://ffmpeg.org/) in the target folder.
 
 To do: 
 
@@ -53,3 +53,6 @@ Node.js v7.4.0 (https://nodejs.org/en/)
 
 discord.js (https://discord.js.org)
 
+ffmpeg (https://ffmpeg.org/)
+
+node-opus (https://www.npmjs.com/package/node-opus)
