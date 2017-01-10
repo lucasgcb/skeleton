@@ -37,7 +37,7 @@ To do:
 * Set permissions so not anybody can turn off your Tiny Tim mix or adjust the volume to under 300% without being allowed to.
 * Make Command parsing less/not retarded.
 * Make an audio queue system so it can be more aware of what it is going to do, and less ghetto of course.
-* Make volume adjustable with parameters.
+* Make volume adjustable with parameters. Like, seriously, I really didn't feel like handling strings for now.
 
 Features to Implement:
 * Content Aware Scaling image processing
