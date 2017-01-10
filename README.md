@@ -1,7 +1,7 @@
 # skeleton
 ##Low-quality, multi-purpose Discord bot made in Node.js for learning purposes.
 
-Current "features":
+**Current "features":**
 
 1- Prunes messages with `yo clean`. It really couldn't care less at the moment so it just deletes them in bulk (100). 
 
