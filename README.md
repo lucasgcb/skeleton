@@ -36,7 +36,7 @@ To do:
 * Have it stream off Youtube.
 * Set permissions so not anybody can turn off your Tiny Tim mix or adjust the volume to under 300% without being allowed to.
 * Make Command parsing less/not retarded.
-* Make a queue system so it can be more aware of what it is going to do and less ghetto, of course.
+* Make an audio queue system so it can be more aware of what it is going to do, and less ghetto of course.
 
 
 Features to Implement:
