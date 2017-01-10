@@ -75,7 +75,7 @@ function play(botID, message, voiceChannel)
 }
 
 function randomNumber(){
-    return Math.floor((Math.random() * 6) + 1); //Random number between 1 and 5
+    return Math.floor((Math.random() * 6) + 1); //Random number between 1 and 6
 }
 
 function pickAudioMessage(voiceChannel)
