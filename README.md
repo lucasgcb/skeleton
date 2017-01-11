@@ -38,7 +38,7 @@ To do:
 * Make Command parsing less/not retarded.
 * Make an audio queue system so it can be more aware of what it is going to do, and less ghetto of course.
 * Make volume adjustable with parameters. Like, seriously, I really didn't feel like handling strings for now.
-* Fix Listener memory leak in Music
+* Fix Listener calls for audio commands causing a memory leak in musicCommands.js
 * Rewrite Everything to less dumb degrees
 
 
