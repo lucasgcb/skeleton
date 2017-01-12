@@ -5,39 +5,38 @@ function audio()
     {
         botID.on('message',(message) => 
         {
-            var voiceChannelArray = message.guild.channels.array(); //An array containing the ID for each Channel on the server
-            var voiceChannel = voiceChannelArray[2];                //This is referencing directly to a channel in the server that I know is a voice channel. Not elegant
-                                                      //Still have to make it so it can connect to any voice channel
+            var voiceChannel = message.member.voiceChannel;         
             if (message.content.startsWith('yo play'))  
-            {    
-                    message.channel.sendMessage(pickAudioMessage(voiceChannel)); //Picks a random message to echo every time someone asks for a song
-                    play(botID, message,voiceChannel);
+            {   
+                    if(voiceChannel!=null)
+                    {
+                        message.channel.sendMessage(pickAudioMessage(voiceChannel)); //Picks a random message to echo every time someone asks for a song
+                        play(botID, message, 0.15, voiceChannel); //starting volume is 0.15
+                    }
+                    else
+                    message.channel.sendMessage('Get in a channel nerd');
             }
         });
     }
 }
 
-function play(botID, message, voiceChannel)
-{
-    
 
+function play(botID, message, volume, voiceChannel)
+{
+    //const ytdl = require('ytdl-core');
+    //const streamOptions = { seek: 0, volume: 1 };
     voiceChannel.join().then( connection => 
     {
-        const dispatcher = connection.playFile(pickSong(randomNumber()));  // Plays a random song on pickSong()
-        dispatcher.on('end', (end) => 
-        {
-            //message.channel.sendMessage('Ｄｏｎｅ' + end);
-            if(end.startsWith('Stream is not generating quickly enough')) //If the Stream ends due to lack of content
-            {
-                play(botID, message, voiceChannel); //eternal loop until someone tells the bot to fuck off
-            }
-
-        });
-        botID.on('message',(message) => 
+        var dispatcher = connection.playFile(pickSong(randomNumber()));  // Plays a random song on pickSong()
+        dispatcher.setVolume(volume);
+        //const stream = ytdl('https://www.youtube.com/watch?v=gZyy7_Ye7xc', {filter : 'audioonly'});
+        //const dispatcher = connection.playStream(stream, streamOptions);
+        var audioCommand = (message) => 
         {
             if(message.content.startsWith('yo hold up') || message.content.startsWith('yo chill'))
             {   
                 dispatcher.pause();
+                message.channel.sendMessage('fucku')
             }
 
             if(message.content.startsWith('alright go') || message.content.startsWith('yo go'))
@@ -47,12 +46,14 @@ function play(botID, message, voiceChannel)
 
             if(message.content.startsWith('yo turn it up') || message.content.startsWith('alright turn it up'))
             {   
-                dispatcher.setVolume(dispatcher.volume - 0.5);
+                dispatcher.setVolume(dispatcher.volume + 0.25);
+                volume=dispatcher.volume;
             }
 
             if(message.content.startsWith('yo turn it down') || message.content.startsWith('alright turn it down'))
             {   
-                dispatcher.setVolume(dispatcher.volume - 0.5);
+                dispatcher.setVolume(dispatcher.volume - 0.25);
+                volume=dispatcher.volume;
             }
             
             if(message.content.startsWith('alright fuck off'))
@@ -61,14 +62,31 @@ function play(botID, message, voiceChannel)
                 voiceChannel.leave();
             }
 
+            if(message.content.startsWith('yo play'))
+            {   
+                dispatcher.end();
+            }
+
             if(message.content.startsWith('yo skrillex') || message.content.startsWith('yo turn it all the way up') || message.content.startsWith('alright turn it all the way up') )
             {   
                 dispatcher.setVolume(dispatcher.volume + 20);
+                volume=dispatcher.volume;
             }
             if(message.content.startsWith('yo turn it all the way down') || message.content.startsWith('alright turn it all the way down'))
             {
                 dispatcher.setVolume(0.5);
+                volume=dispatcher.volume;
             }
+        } // This identifies the anonymous function (message) so this listener can be killed. We edit the volume variable here.
+        botID.on('message', audioCommand);
+        dispatcher.once('end', (end) => 
+        {
+            //message.channel.sendMessage('Ｄｏｎｅ  ' + end);
+            if(end.startsWith('Stream')) //If the Stream ends due to lack of content
+            {
+                play(botID, message, volume,voiceChannel); //Make a new one retaining the same volume from the previous.
+            }
+            botID.removeListener('message', audioCommand); //kills the aforementioned listener.
         });
     }
     );       
@@ -99,6 +117,7 @@ function pickAudioMessage(voiceChannel)
 function pickSong(number)
 {
     var song;
+    var musicPath = './music/'
     switch(number) 
     {
         case 1:
@@ -119,6 +138,7 @@ function pickSong(number)
         default:
             song ='tinytim6.mp3';
     }
+    song = musicPath + song
     return song;
 }
 

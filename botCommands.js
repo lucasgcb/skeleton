@@ -1,4 +1,5 @@
 
+
 function botCommands()
 {
     this.rise = function(botID,token) // Start up sequence, can be expanded upon
@@ -23,6 +24,11 @@ function botCommands()
                     message.channel.bulkDelete(100);        //Bulk delete 100 messages.
                     message.channel.sendMessage('Ｄｅｌｅｔｅｄ   ａ   ｌｏｔｔａ    ｓｈｉｔ');
                 }
+                else
+                if (message.content.startsWith('yo sneaky clean')) 
+                {
+                    message.channel.bulkDelete(2);        //Bulk delete 2 messages.
+                }
                 
         });
     }
@@ -33,7 +39,7 @@ function botCommands()
             if(message.content == 'bruh')
             {
                 message.channel.sendMessage('ＢＲＵＨ');
-                message.reply(randomNumber()); //Spits a random number from 1 to 6.
+                message.reply(randomNumber()); //Spits a random number from 0 to 1000
             }
         });
     }
@@ -41,7 +47,7 @@ function botCommands()
 
 function randomNumber()
 {
-    return Math.floor((Math.random() * 6) + 1);
+    return Math.floor((Math.random() * 999) + 1);
 }
 
 
