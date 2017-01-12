@@ -32,13 +32,13 @@ alright turn it all the way down      //lowers the volume to 25% of the original
 
 To do: 
 
-* Identify voice channels and join them. Either by request or randomly.
+* Identify voice channels randomly.
 * Have it stream off Youtube.
 * Set permissions so not anybody can turn off your Tiny Tim mix or adjust the volume to under 300% without being allowed to.
 * Make Command parsing less/not retarded.
 * Make an audio queue system so it can be more aware of what it is going to do, and less ghetto of course.
 * Make volume adjustable with parameters. Like, seriously, I really didn't feel like handling strings for now.
-* Fix Listener calls for audio commands causing a memory leak in musicCommands.js
+:heavy_check_mark: ~~Fix Listener calls for audio commands causing a memory leak in musicCommands.js~~
 * Rewrite Everything to less dumb degrees
 
 
