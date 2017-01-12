@@ -39,6 +39,7 @@ To do:
 * Make an audio queue system so it can be more aware of what it is going to do, and less ghetto of course.
 * Make volume adjustable with parameters. Like, seriously, I really didn't feel like handling strings for now.
 * ~~Fix Listener calls for audio commands causing a memory leak in musicCommands.js~~ :heavy_check_mark:
+* Have audio commands identify validate which server they are coming from. Possibly full rewrite for this one.
 * Rewrite Everything to less dumb degrees
 
 
