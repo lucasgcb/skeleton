@@ -6,6 +6,7 @@ function botCommands()
     {
         botID.login(token);
         //bot token so node can identify who to wake up    
+        botID.once('ready', fun => {console.log("Skeleton is  up on " + botID.guilds.size + " servers");});
     }
 
 
@@ -13,23 +14,28 @@ function botCommands()
     {
         botID.on('message', (message) => 
         {
-            if(message.content.startsWith('alright fuck off'))
+            if(message.guild!=null)
             {
-                message.reply(''); //Points at the user that told it to sod off
-                message.channel.sendFile('https://media.giphy.com/media/zZjkN02ErICiY/giphy.gif'); //Sends a gif to the user's channel
+                console.log("["+ message.guild + ']' + message.author.username + ": " + message.content + " | @" + message.createdAt);
+                if(message.content.startsWith('alright fuck off'))
+                {
+                    message.reply(''); //Points at the user that told it to sod off
+                    message.channel.sendFile('https://media.giphy.com/media/zZjkN02ErICiY/giphy.gif'); //Sends a gif to the user's channel
+                }
+                else 
+                    if (message.content.startsWith('yo clean')) //Messages that start with this will have the bot
+                    {
+                        message.channel.bulkDelete(100);        //Bulk delete 100 messages.
+                        message.channel.sendMessage('Ｄｅｌｅｔｅｄ   ａ   ｌｏｔｔａ    ｓｈｉｔ');
+                    }
+                    else
+                    if (message.content.startsWith('yo sneaky clean')) 
+                    {
+                        message.channel.bulkDelete(3);        //Bulk delete 3 messages.
+                    }
             }
-            else 
-                if (message.content.startsWith('yo clean')) //Messages that start with this will have the bot
-                {
-                    message.channel.bulkDelete(100);        //Bulk delete 100 messages.
-                    message.channel.sendMessage('Ｄｅｌｅｔｅｄ   ａ   ｌｏｔｔａ    ｓｈｉｔ');
-                }
-                else
-                if (message.content.startsWith('yo sneaky clean')) 
-                {
-                    message.channel.bulkDelete(2);        //Bulk delete 2 messages.
-                }
-                
+            else
+                 console.log("[Private]" + message.author.username + ": " + message.content + " | @" + message.createdAt);
         });
     }
 
@@ -47,7 +53,7 @@ function botCommands()
 
 function randomNumber()
 {
-    return Math.floor((Math.random() * 999) + 1);
+    return Math.floor((Math.random() * 1000) + 1);
 }
 
 

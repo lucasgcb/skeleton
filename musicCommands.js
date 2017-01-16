@@ -5,16 +5,21 @@ function audio()
     {
         botID.on('message',(message) => 
         {
-            var voiceChannel = message.member.voiceChannel;         
-            if (message.content.startsWith('yo play'))  
-            {   
-                    if(voiceChannel!=null)
-                    {
-                        message.channel.sendMessage(pickAudioMessage(voiceChannel)); //Picks a random message to echo every time someone asks for a song
-                        play(botID, message, 0.15, voiceChannel); //starting volume is 0.15
-                    }
-                    else
-                    message.channel.sendMessage('Get in a channel nerd');
+            if(message.guild!=null)
+            {      
+                if (message.content.startsWith('yo play'))  
+                {   
+                        var voiceChannel = message.member.voiceChannel;   
+                        if(voiceChannel!=null)
+                        {
+                            
+                            console.log("#########" + message.author.username + " requested a tune!"  + " | @" + message.createdAt );
+                            message.channel.sendMessage(pickAudioMessage(voiceChannel)); //Picks a random message to echo every time someone asks for a song
+                            play(botID, message, 0.15, voiceChannel); //starting volume is 0.15
+                        }
+                        else
+                        message.reply('Ｇｅｔ   ｉｎ   ａ   ｃｈａｎｎｅｌ,   ｎｅｒｄ.');
+                }
             }
         });
     }
@@ -31,7 +36,9 @@ function play(botID, message, volume, voiceChannel)
         dispatcher.setVolume(volume);
         //const stream = ytdl('https://www.youtube.com/watch?v=gZyy7_Ye7xc', {filter : 'audioonly'});
         //const dispatcher = connection.playStream(stream, streamOptions);
-        var audioCommand = (message) => 
+        let collector = message.channel.createCollector( m => m);
+        
+        /*var audioCommand = (message) => 
         {
             if(message.content.startsWith('yo hold up') || message.content.startsWith('yo chill'))
             {   
@@ -58,14 +65,68 @@ function play(botID, message, volume, voiceChannel)
             
             if(message.content.startsWith('alright fuck off'))
             {   
+
+                console.log(message.author.username + " killed the buzz."  + " | @" + message.createdAt );
+                dispatcher.end();
+                voiceChannel.leave();
+            }
+            */
+            /*if(message.content.startsWith('yo play'))
+            {   
+                dispatcher.end();
+            }*/
+            
+            /*
+            if(message.content.startsWith('yo skrillex') || message.content.startsWith('yo turn it all the way up') || message.content.startsWith('alright turn it all the way up') )
+            {   
+                dispatcher.setVolume(dispatcher.volume + 20);
+                volume=dispatcher.volume;
+            }
+            if(message.content.startsWith('yo turn it all the way down') || message.content.startsWith('alright turn it all the way down'))
+            {
+                dispatcher.setVolume(0.5);
+                volume=dispatcher.volume;
+            }
+        } */
+        // This identifies the anonymous function (message) so this listener can be killed. We edit the volume variable here.
+
+        collector.on('message', message =>
+        {
+            if(message.content.startsWith('yo hold up') || message.content.startsWith('yo chill'))
+            {   
+                dispatcher.pause();
+                message.channel.sendMessage('fucku')
+            }
+
+            if(message.content.startsWith('alright go') || message.content.startsWith('yo go'))
+            {   
+                dispatcher.resume();
+            }
+
+            if(message.content.startsWith('yo turn it up') || message.content.startsWith('alright turn it up'))
+            {   
+                dispatcher.setVolume(dispatcher.volume + 0.25);
+                volume=dispatcher.volume;
+            }
+
+            if(message.content.startsWith('yo turn it down') || message.content.startsWith('alright turn it down'))
+            {   
+                dispatcher.setVolume(dispatcher.volume - 0.25);
+                volume=dispatcher.volume;
+            }
+            
+            if(message.content.startsWith('alright fuck off'))
+            {   
+
+                console.log(message.author.username + " killed the buzz."  + " | @" + message.createdAt );
                 dispatcher.end();
                 voiceChannel.leave();
             }
 
-            if(message.content.startsWith('yo play'))
+            /*if(message.content.startsWith('yo play'))
             {   
                 dispatcher.end();
-            }
+            }*/
 
             if(message.content.startsWith('yo skrillex') || message.content.startsWith('yo turn it all the way up') || message.content.startsWith('alright turn it all the way up') )
             {   
@@ -77,8 +138,8 @@ function play(botID, message, volume, voiceChannel)
                 dispatcher.setVolume(0.5);
                 volume=dispatcher.volume;
             }
-        } // This identifies the anonymous function (message) so this listener can be killed. We edit the volume variable here.
-        botID.on('message', audioCommand);
+        });
+
         dispatcher.once('end', (end) => 
         {
             //message.channel.sendMessage('Ｄｏｎｅ  ' + end);
@@ -86,7 +147,9 @@ function play(botID, message, volume, voiceChannel)
             {
                 play(botID, message, volume,voiceChannel); //Make a new one retaining the same volume from the previous.
             }
-            botID.removeListener('message', audioCommand); //kills the aforementioned listener.
+            //botID.removeListener('message', audioCommand); //kills the aforementioned listener.
+            //This was deprecated in the code because identifying audioCommand made it so volume was adjustable globally in a single guild.
+            collector.stop(); //kills the aforementioned listener.
         });
     }
     );       
