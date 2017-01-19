@@ -39,6 +39,8 @@ Standard commands are as following:
 .e621 [tags] //pastes a link to a random result on e621 containing the tags.  tags are separated by spaces and multiple-word tags are linked with underline. example: .e621 holding_hands rating:safe
 .gelbooru [tags]//pastes a link to a random result on gelbooru containing the tags
 .limpe [argument] // wipes a number of messages in the argument + the request itself.
+.gi [tag] // searches google images and pastes random result
+.g1 [tag] // searches google images and pastes the first result
 petshop ? //Communicates with Cleverbot. The memory is wiped in around 10 seconds of inactivity.
 ```
 
