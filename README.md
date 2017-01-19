@@ -3,7 +3,7 @@
 
 **Current "features":**
 
-1- Prunes messages with `yo clean`. It really couldn't care less at the moment so it just deletes them in bulk (100). 
+1- Prunes messages with `.limpet [arg]`. 
 
 2- Picks and plays random Tiny Tim singles (or whichever 6 tracks declared as such) with
 `yo play` on a statically defined channel in botCommands.js 
