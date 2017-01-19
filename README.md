@@ -3,7 +3,7 @@
 
 **Current "features":**
 
-1- Prunes messages with `.limpet [arg]`. 
+1- Prunes messages with `.limpe [arg]` where  `arg` is the number of posts you want deleted. 
 
 2- Picks and plays random Tiny Tim singles (or whichever 6 tracks declared as such) with
 `yo play` on a statically defined channel in botCommands.js 
