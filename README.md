@@ -9,6 +9,11 @@
 `yo play` on a statically defined channel in botCommands.js 
 intermittently until told to leave with `alright fuck off`.
 
+New Features:
+* e621/gelbooru search
+* Shows avatars from users in the server on request
+* google image search (requires your own google API key for custom search + identifier)
+* Portuguese speaking Cleverbot / Cleverbot em português
 
 Audio can be adjusted with messages that start with the following indexes:
 
@@ -54,13 +59,10 @@ To do:
 * ~~Have audio commands identify which server they are coming from and not change volume globally, lmao~~ :heavy_check_mark:
 * Rewrite Everything to less dumb degrees
 
-New Features:
-* e621/gelbooru search
-* Shows avatars from users in the server on request
-* google image search (requires your own google API key for custom search + identifier)
-* Portuguese speaking Cleverbot / Cleverbot em português
+
 
 Features to Implement:
+* Levelling system along with custom charts (Databases)
 * Content Aware Scaling image processing
 * ~~Cleverbot chats~~ :heavy_check_mark:
 * Standard google searches
