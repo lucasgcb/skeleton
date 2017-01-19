@@ -27,6 +27,16 @@ yo skrillex      //Raises the volume by 200%.
 yo turn it all the way down       //lowers the volume to 25% of the original value.
 alright turn it all the way down      //lowers the volume to 25% of the original value.
 ```
+Standard commands are as following:
+
+```
+.avatar [usermention] // pastes a link to user avatar
+.e621 [tags] //pastes a link to a random result on e621 containing the tags.  tags are separated by spaces and multiple-word tags are linked with underline. example: .e621 holding_hands rating:safe
+.gelbooru [tags]//pastes a link to a random result on gelbooru containing the tags
+.limpe [argument] // wipes a number of messages in the argument + the request itself.
+petshop ? //Communicates with Cleverbot. The memory is wiped in around 10 seconds of inactivity.
+```
+
 
 3- Is now a creep and echoes every message into console along with alerting when it's going to play a song. Also can read Direct Messages (PMs) but doesn't reply to them just yet.
 
@@ -44,11 +54,16 @@ To do:
 * ~~Have audio commands identify which server they are coming from and not change volume globally, lmao~~ :heavy_check_mark:
 * Rewrite Everything to less dumb degrees
 
+New Features:
+* e621/gelbooru search
+* Shows avatars from users in the server on request
+* google image search (requires your own google API key for custom search + identifier)
+* Portuguese speaking Cleverbot / Cleverbot em português
 
 Features to Implement:
 * Content Aware Scaling image processing
-* Cleverbot chats
-* Google searches
+* ~~Cleverbot chats~~ :heavy_check_mark:
+* Standard google searches
 * Throw parties in voice channels according to local/set time.
 * Possibly invite more skeletons for said parties
 * Englobe 90% of the things it says with the Microsoft YaHei font, implicitly
@@ -57,10 +72,20 @@ Features to Implement:
 
 Resources used:
 
-Node.js v7.4.0 (https://nodejs.org/en/)
+*Node.js v7.4.0 (https://nodejs.org/en/)
 
-discord.js (https://discord.js.org)
+*discord.js (https://discord.js.org)
 
-ffmpeg (https://ffmpeg.org/)
+*ffmpeg (https://ffmpeg.org/)
 
-node-opus (https://www.npmjs.com/package/node-opus)
+*node-opus (https://www.npmjs.com/package/node-opus)
+
+*google-images (https://www.npmjs.com/package/google-images#set-up-google-custom-search-engine)
+
+*e621 (https://www.npmjs.com/package/e621)
+
+*booru-getter (https://www.npmjs.com/package/booru-getter)
+
+*cleverbot-node (https://www.npmjs.com/package/cleverbot-node)
+
+*google-translate (https://www.npmjs.com/package/google-translate-api)
