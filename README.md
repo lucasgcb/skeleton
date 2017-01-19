@@ -38,7 +38,7 @@ petshop ? //Communicates with Cleverbot. The memory is wiped in around 10 second
 ```
 
 
-3- Is now a creep and echoes every message into console along with alerting when it's going to play a song. Also can read Direct Messages (PMs) but doesn't reply to them just yet.
+3- Is now a creep and echoes every message into console along with alerting when it's going to play a song. Also can read Direct Messages (PMs) and the `petshop ?` command can be utilized in a direct message channel
 
 ##Audio streaming requires ffmpeg (https://ffmpeg.org/) in the target folder or in cmd PATH.
 
