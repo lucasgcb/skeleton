@@ -28,16 +28,16 @@ function audio()
 
 function play(botID, message, volume, voiceChannel)
 {
-    //const ytdl = require('ytdl-core');
-    //const streamOptions = { seek: 0, volume: 1 };
+    const ytdl = require('ytdl-core');
+    const streamOptions = { seek: 0, volume: 1 };
     voiceChannel.join().then( connection => 
     {
         var dispatcher = connection.playFile(pickSong(randomNumber()));  // Plays a random song on pickSong()
-        dispatcher.setVolume(volume);
-        //const stream = ytdl('https://www.youtube.com/watch?v=gZyy7_Ye7xc', {filter : 'audioonly'});
+        
+        //const stream = ytdl('http://www.youtube.com/watch?v=xr3VqNlS6KE', {filter : 'audioonly'});
         //const dispatcher = connection.playStream(stream, streamOptions);
         let collector = message.channel.createCollector( m => m);
-        
+        dispatcher.setVolume(volume);
         /*var audioCommand = (message) => 
         {
             if(message.content.startsWith('yo hold up') || message.content.startsWith('yo chill'))
@@ -142,7 +142,7 @@ function play(botID, message, volume, voiceChannel)
 
         dispatcher.once('end', (end) => 
         {
-            //message.channel.sendMessage('Ｄｏｎｅ  ' + end);
+            message.channel.sendMessage('Ｄｏｎｅ  ' + end);
             if(end.startsWith('Stream')) //If the Stream ends due to lack of content
             {
                 play(botID, message, volume,voiceChannel); //Make a new one retaining the same volume from the previous.

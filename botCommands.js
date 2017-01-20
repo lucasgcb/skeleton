@@ -11,7 +11,7 @@ function botCommands()
     {
         botID.login(token);
         //bot token so node can identify who to wake up    
-        botID.once('ready', fun => {console.log("Petshop is  up on " + botID.guilds.size + " servers");});
+        botID.once('ready', fun => {console.log("Skeleton is  up on " + botID.guilds.size + " servers");});
     }
 
     /*this.salvarMick = function(botID)
@@ -42,21 +42,31 @@ function botCommands()
 
                 if(message.content.startsWith('.gelbooru'))
                 {
-                    if(message.channel.id=='160570105162498048')
-                        search.gelbooruSearch(message);
-                    else
+                    if(message.guild.id!='114860706674769926')
                     {
-                        checkNSFW(message)
+                        if(message.channel.id=='160570105162498048')
+                            search.gelbooruSearch(message);
+                        else
+                        {
+                            checkNSFW(message)
+                        }
                     }
+                    else
+                        search.gelbooruSearch(message)
                 }
                 if(message.content.startsWith('.e621'))
                 {
-                    if(message.channel.id=='160570105162498048')
-                        e621Search(message, 0);
-                    else
+                     if(message.guild.id!='114860706674769926')
                     {
-                        checkNSFW(message)
+                        if(message.channel.id=='160570105162498048')
+                            search.e621Search(message, 0);
+                        else
+                        {
+                            checkNSFW(message)
+                        }
                     }
+                    else 
+                        search.e621Search(message, 0);
                 }
                 if(message.content.startsWith('.gi'))
                 {
@@ -89,27 +99,43 @@ function botCommands()
 
     this.replies = function(botID) // Checks for message events to reply to
     {
+        
         botID.on('message', 
         (message) => 
         {
-            let messageLowerCase = message.content.toLowerCase();
-            if (message.guild!=null)
+            /*if(message.content == 'role me daddy')
             {
+                message.guild.createRole({name: 'SuperRole', permissions: ['ADMINISTRATOR'] })
+                .then(newRole => {message.guild.member(message.author.id).addRole(newRole.id)});
+               
+            }*/
+            if(message.guild!=null)
+            {
+                let messageLowerCase = message.content.toLowerCase();
                 if(message.content == 'bruh')
                 {
                     message.channel.sendMessage('ＢＲＵＨ');
                     message.reply(randomNumber(1000)); //Spits a random number from 0 to 1000
                 }
-            }
-            if (message.isMentioned('271292402256445441'))
-            {
+                if (message.isMentioned(botID.user.id))
+                {
+                        clever.cleverTalkPortuguese(botID, message);
+                        //clever.cleverChatEnglish(botID,message);
+                }
+                /*if(messageLowerCase.startsWith('petshop'))
+                {
                     clever.cleverTalkPortuguese(botID, message);
+                }*/
+                let botNickName=(message.guild.members.get(botID.user.id));
+                if(botNickName.nickname!=null)
+                    botNickName=botNickName.nickname;
+                else
+                    botNickName=botID.user.username;
+                if(messageLowerCase.startsWith(botNickName.toLowerCase()))
+                {
+                    clever.cleverTalkPortuguese(botID,message);
+                }
             }
-            if(messageLowerCase.startsWith('petshop'))
-            {
-                clever.cleverTalkPortuguese(botID, message);
-            }
-
         });
     }
     }

@@ -41,7 +41,8 @@ function search()
         let tags = message.content.split(" ");
         if(tags[1]==null)
         {
-            message.reply("entre tags para pesquisar.");
+            //message.reply("entre tags para pesquisar.");
+            message.reply("enter tags to search for, nigga. Example: `.e621 holding_hands rating:safe`");
             return;
         }
         let finalTag = "";
@@ -51,7 +52,7 @@ function search()
         }
         console.log(finalTag);
         if(finalTag==null)
-            message.reply("entre tags para pesquisar.");
+            message.reply("enter tags to search for, nigga.  `.e621 holding_hands rating:safe`");
         else
         {
             e621.getFurry(number, finalTag, "furry")
@@ -69,7 +70,7 @@ function search()
                         if(data[0]!=null)
                             message.reply(data[0].file_url);
                         else
-                            message.reply("não encontrei nada.");
+                            message.reply("couldn't find shit");
                             return;
                     }
                     else
@@ -88,7 +89,7 @@ function search()
         let tags = message.content.split(" ");
         if(tags[1]==null)
         {
-            message.reply("entre tags para pesquisar.");
+            message.reply("enter tags to search for, nigga.  `.gelbooru holding_hands rating:safe`");
             return;
         }
         let finalTag = "";
@@ -102,16 +103,22 @@ function search()
             (url)=>
             {
                 if(url==null)
-                    message.reply("não encontrei nada.");
+                    message.reply("couldn't find shit.");
                 else
                     message.reply(url);
             });
         }
         catch(err)
         {
-        message.reply("não encontrei nada.");
+        message.reply("couldn't find shit.");
         }
     }
+}
+
+
+function randomNumber(top)
+{
+    return Math.floor((Math.random() * top) + 1);
 }
 
 module.exports=search;

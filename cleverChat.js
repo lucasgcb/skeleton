@@ -6,8 +6,25 @@ function cleverChat()
     this.cleverTalkPortuguese=function cleverTalkPortuguese(botID, msg)
     {
         let messageLowerCase = msg.content.toLowerCase();
-        let textLog = messageLowerCase.replace("petshop", "");
-        textLog = textLog.replace("<@271292402256445441>", "");
+        let textLog 
+        if (msg.isMentioned(botID.user.id))
+        {
+            console.log("mention detected")
+            textLog=messageLowerCase.replace("<@!" + botID.user.id + ">", "");
+        }
+        else
+        {
+            if (msg.guild.member(botID.user).nickname!=null)
+            {
+                messageLowerCase= messageLowerCase.replace("<@!" + botID.user.id + ">", "");
+                textLog = messageLowerCase.slice(msg.guild.member(botID.user).nickname.length, messageLowerCase.length);
+            }
+            else
+            {
+                messageLowerCase = messageLowerCase.replace("<@" + botID.user.id + ">", "");
+                textLog = messageLowerCase.slice(botID.user.username.length, messageLowerCase.length);
+            }
+        }
         console.log(textLog);
         translate(textLog, {from: 'pt', to: 'en'})
         .then(
@@ -39,6 +56,41 @@ function cleverChat()
         err => 
         {
             console.error(err);
+        });
+        return;
+    }
+
+    this.cleverTalkEnglish = function cleverTalkEnglish(botID, msg)
+    {
+        let messageLowerCase = msg.content.toLowerCase();
+        let textLog 
+        if (msg.isMentioned(botID.user.id))
+        {
+            console.log("mention detected")
+            textLog=messageLowerCase.replace("<@!" + botID.user.id + ">", "");
+        }
+        else
+        {
+            if (msg.guild.member(botID.user).nickname!=null)
+            {
+                messageLowerCase= messageLowerCase.replace("<@!" + botID.user.id + ">", "");
+                textLog = messageLowerCase.slice(msg.guild.member(botID.user).nickname.length, messageLowerCase.length);
+            }
+            else
+            {
+                messageLowerCase = messageLowerCase.replace("<@" + botID.user.id + ">", "");
+                textLog = messageLowerCase.slice(botID.user.username.length, messageLowerCase.length);
+            }
+        }
+        console.log(textLog);
+        let cleverbot = new Cleverbot;
+        Cleverbot.prepare(function()
+        {
+            cleverbot.write(textLog, function (response) 
+            {
+                console.log(response.message);
+                msg.reply(response.message);
+            });
         });
         return;
     }
