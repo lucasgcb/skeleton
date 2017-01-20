@@ -41,11 +41,11 @@ Standard commands are as following:
 .limpe [argument] // wipes a number of messages in the argument + the request itself.
 .gi [tag] // searches google images and pastes random result
 .g1 [tag] // searches google images and pastes the first result
-petshop ? //Communicates with Cleverbot. The memory is wiped in around 10 seconds of inactivity.
+[nickname] ? //Communicates with Cleverbot when you say its nickname or is mentioned. The memory is wiped in around 10 seconds of inactivity.
 ```
 
 
-3- Is now a creep and echoes every message into console along with alerting when it's going to play a song. Also can read Direct Messages (PMs) and the `petshop ?` command can be utilized in a direct message channel
+3- Is now a creep and echoes every message into console along with alerting when it's going to play a song. Also can read Direct Messages (PMs) and the `[nickname] ?` command can be utilized in a direct message channel
 
 ##Audio streaming requires ffmpeg (https://ffmpeg.org/) in the target folder or in cmd PATH.
 
