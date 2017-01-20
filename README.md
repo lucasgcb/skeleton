@@ -88,7 +88,7 @@ Resources used:
 
 *e621 (https://www.npmjs.com/package/e621)
 
-*booru-getter (https://www.npmjs.com/package/booru-getter)
+*booru-getter (https://www.npmjs.com/package/booru-getter) - The module was edited to return null when getting 0 results
 
 *cleverbot-node (https://www.npmjs.com/package/cleverbot-node)
 
