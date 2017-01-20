@@ -35,7 +35,7 @@ alright turn it all the way down      //lowers the volume to 25% of the original
 Standard commands are as following:
 
 ```
-.avatar [usermention] // pastes a link to user avatar
+.avatar [usermention] // pastes a link to the mentioned user's avatar
 .e621 [tags] //pastes a link to a random result on e621 containing the tags.  tags are separated by spaces and multiple-word tags are linked with underline. example: .e621 holding_hands rating:safe
 .gelbooru [tags]//pastes a link to a random result on gelbooru containing the tags
 .limpe [argument] // wipes a number of messages in the argument + the request itself.
