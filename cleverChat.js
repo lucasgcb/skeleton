@@ -1,30 +1,39 @@
 const Cleverbot = require('cleverbot-node');
 const translate = require('google-translate-api');
+const cleverbot = new Cleverbot;
 
 function cleverChat()
 {
     this.cleverTalkPortuguese=function cleverTalkPortuguese(botID, msg)
     {
         let messageLowerCase = msg.content.toLowerCase();
-        let textLog 
-        if (msg.isMentioned(botID.user.id))
+        let textLog;
+        if(msg.guild)
         {
-            console.log("mention detected")
-            textLog=messageLowerCase.replace("<@!" + botID.user.id + ">", "");
-        }
-        else
-        {
-            if (msg.guild.member(botID.user).nickname!=null)
+            if (msg.isMentioned(botID.user.id))
             {
-                messageLowerCase= messageLowerCase.replace("<@!" + botID.user.id + ">", "");
-                textLog = messageLowerCase.slice(msg.guild.member(botID.user).nickname.length, messageLowerCase.length);
+                if (msg.guild.member(botID.user).nickname!=null)
+                {
+                    textLog=messageLowerCase.replace("<@!" + botID.user.id + ">", "");
+                }
+                else
+                    console.log("removendo id");
+                    textLog=messageLowerCase.replace("<@" + botID.user.id + ">", "");
             }
             else
             {
-                messageLowerCase = messageLowerCase.replace("<@" + botID.user.id + ">", "");
-                textLog = messageLowerCase.slice(botID.user.username.length, messageLowerCase.length);
+                if (msg.guild.member(botID.user).nickname!=null)
+                {
+                    textLog=messageLowerCase.slice(msg.guild.member(botID.user).nickname.length, messageLowerCase.length);
+                }
+                else
+                {
+                    textLog=messageLowerCase.slice(botID.user.username.length, messageLowerCase.length);
+                }
             }
         }
+        else
+            textLog=messageLowerCase;
         console.log(textLog);
         translate(textLog, {from: 'pt', to: 'en'})
         .then(
@@ -63,27 +72,34 @@ function cleverChat()
     this.cleverTalkEnglish = function cleverTalkEnglish(botID, msg)
     {
         let messageLowerCase = msg.content.toLowerCase();
-        let textLog 
-        if (msg.isMentioned(botID.user.id))
+        let textLog;
+        if(msg.guild)
         {
-            console.log("mention detected")
-            textLog=messageLowerCase.replace("<@!" + botID.user.id + ">", "");
-        }
-        else
-        {
-            if (msg.guild.member(botID.user).nickname!=null)
+            if (msg.isMentioned(botID.user.id))
             {
-                messageLowerCase= messageLowerCase.replace("<@!" + botID.user.id + ">", "");
-                textLog = messageLowerCase.slice(msg.guild.member(botID.user).nickname.length, messageLowerCase.length);
+                if (msg.guild.member(botID.user).nickname!=null)
+                {
+                    textLog=messageLowerCase.replace("<@!" + botID.user.id + ">", "");
+                }
+                else
+                    console.log("removendo id");
+                    textLog=messageLowerCase.replace("<@" + botID.user.id + ">", "");
             }
             else
             {
-                messageLowerCase = messageLowerCase.replace("<@" + botID.user.id + ">", "");
-                textLog = messageLowerCase.slice(botID.user.username.length, messageLowerCase.length);
+                if (msg.guild.member(botID.user).nickname!=null)
+                {
+                    textLog=messageLowerCase.slice(msg.guild.member(botID.user).nickname.length, messageLowerCase.length);
+                }
+                else
+                {
+                    textLog=messageLowerCase.slice(botID.user.username.length, messageLowerCase.length);
+                }
             }
         }
+        else
+            textLog=messageLowerCase;
         console.log(textLog);
-        let cleverbot = new Cleverbot;
         Cleverbot.prepare(function()
         {
             cleverbot.write(textLog, function (response) 

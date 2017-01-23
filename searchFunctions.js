@@ -4,10 +4,10 @@ function search()
 {
     this.googleImages = function imageSearch(message, result)
     {
-        let client = new ImagesClient('CSE key', 'API key');
+        let client = new ImagesClient('017623223148173128005:5tnp5qgoapg', 'AIzaSyBCtoMLDs3DJRSNf1L8kEm7qvKC8EYwsuM');
         let searchString = message.content.replace(".gi", "");
         client.search(searchString, {size: 'large'})
-        .then(function (images) 
+        .then(function (images)
         {
 
             message.reply(images[result].url)

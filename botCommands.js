@@ -14,7 +14,30 @@ function botCommands()
         botID.once('ready', fun => {console.log("Skeleton is  up on " + botID.guilds.size + " servers");});
     }
 
-    /*this.salvarMick = function(botID)
+    function checkDust(rolesList)
+    {
+        //console.log("Checking dust")
+        //console.log(rolesList.length)
+        if(rolesList.length>1)
+        {
+            for(i=1; i<rolesList.length ;i++)
+                if(rolesList[i].name=="Bites the Dust")
+                {
+                    //console.log("we got dust")
+                    if(rolesList.length<3)
+                        return true;
+                    else
+                    {
+                        console.log("we got too much dust")
+                        rolesList[i].delete();
+                    }
+                }
+                else rolesList[i].delete();
+        }
+        return false;
+    }
+
+    this.salvarMick = function(botID)
     {
         if(!botID.status);
         {
@@ -23,12 +46,22 @@ function botCommands()
             {
                 serverMap=serverMap[0].members.map( map => {return map});
                 let user=serverMap[0].guild.members.get('114859658895818754');
-                var role = serverMap[0].guild.createRole({name: "Bites the Dust"}).then(;
+                let rolesList=user.roles.map( map => {return map});
+                if(!checkDust(rolesList))
+                {
+                    user.setRoles([])
+                    .then(()=> 
+                    {
+                        serverMap[0].guild.createRole({name: "Bites the Dust", color:"#BE49A7"})
+                        .then(createdRole => {user.addRole(createdRole)})
+                        .catch(err => {console.log(err)})
+                    }).catch(err => {console.log(err)});
+                }
             }
             else 
                 console.log("Server's missing?");
         }
-    }*/
+    }
 
     this.vigilance = function(botID) // Checks for assorted message events that aren't music stream related.
     {
@@ -136,6 +169,9 @@ function botCommands()
                     clever.cleverTalkPortuguese(botID,message);
                 }
             }
+            else
+                if(message.author.id!=botID.user.id)
+                    clever.cleverTalkPortuguese(botID,message)
         });
     }
     }
