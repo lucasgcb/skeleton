@@ -1,5 +1,5 @@
 # skeleton
-##Low-quality, multi-purpose Discord bot made in Node.js for learning purposes.
+## Experimental Multi-purpose Discord bot made in Node.js for learning purposes.
 
 **Current "features":**
 
@@ -47,7 +47,7 @@ Standard commands are as following:
 
 3- Is now a creep and echoes every message into console along with alerting when it's going to play a song. Also can read Direct Messages (PMs) and the `[nickname] ?` command can be utilized in a direct message channel
 
-##Audio streaming requires ffmpeg (https://ffmpeg.org/) in the target folder or in cmd PATH.
+## Audio streaming requires ffmpeg (https://ffmpeg.org/) in the target folder or in cmd PATH.
 
 To do: 
 
